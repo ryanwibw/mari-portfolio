@@ -1,0 +1,6 @@
+[
+          {
+            "command": "edit.deleteLeft",
+            "key": "backspace"
+          }
+   ]

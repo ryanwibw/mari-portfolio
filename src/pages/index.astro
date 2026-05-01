@@ -1,0 +1,181 @@
+---
+import Layout from '../layouts/Layout.astro';
+import fujiImage from '../assets/bg-fuji.jpeg';
+
+const projects = [
+	{ title: "Bynino Luxury Trans", sub: "Web Booking Jasa Travel, Dashboard, CRUD System" },
+	{ title: "Mari Photobooth", sub: "Web Photobooth Online" },
+	{ title: "Hand Vision", sub: "AI Hand Tracking" },
+	{ title: "Mari Qurban (Soon)", sub: "Sistem Digital Pengurusan Qurban" },
+];
+
+const technicalNavigator = [
+	{ group: "Frameworks & Mobile", items: ["Laravel", "Next.js", "Flutter", "Unity"] },
+	{ group: "Databases", items: ["MySQL", "PostgreSQL", "SQLite"] },
+	{ group: "Tools & Testing", items: ["Laragon", "DBeaver", "Postman", "SQLMap", "Figma"] },
+	{ group: "Planning & Logic", items: ["SDLC", "ERD", "Flowchart", "Use Case Diagram", "Activity Diagram", "Sequence Diagram"] }
+];
+
+const expeditions = [
+	{
+		company: "PT. WIRATAMA INDO NUSANTARA",
+		role: "IT Support Freelance",
+		period: "Sep 2024",
+		jobdesk: "Remote troubleshooting software & network, maintenance malware & antivirus via AnyDesk/TeamViewer."
+	},
+	{
+		company: "PT. REKA MULTI APTIKA",
+		role: "Quality Assurance Intern",
+		period: "Mei — Agt 2024",
+		jobdesk: "Merancang test cases, manual & API testing (Postman), serta security audit guna memastikan kualitas fitur."
+	},
+	{
+		company: "BYNINO LUXURY TRANS",
+		role: "Web Developer Full-Stack",
+		period: "Agt 2025",
+		jobdesk: "Merancang bangun aplikasi booking travel berbasis web menggunakan metode SDLC."
+	}
+];
+---
+
+<Layout>
+	<main class="bg-[#050505] text-white selection:bg-amber-500/30 font-sans overflow-x-hidden">
+		
+		<!-- HERO: ULTRA COMPACT -->
+		<section class="relative h-[50vh] md:h-[60vh] w-full flex items-center justify-center overflow-hidden">
+			<div class="absolute inset-0 z-0">
+				<img src={fujiImage.src} alt="Fuji" class="w-full h-full object-cover opacity-20" />
+				<div class="absolute inset-0 bg-gradient-to-t from-[#050505] via-transparent to-transparent"></div>
+			</div>
+
+			<div class="relative z-10 text-center px-6">
+				
+				<h1 class="reveal-up text-[16vw] md:text-[10vw] font-serif font-black tracking-tighter leading-none text-white italic">
+					MARI<span class="text-amber-600/30">.</span>
+				</h1>
+				<div class="reveal-up inline-block px-2 py-0.5 mb-3 border border-white/10 rounded-full bg-white/5 backdrop-blur-md">
+					<span class="text-[8px] tracking-[0.2em] uppercase font-bold text-white/50">Media Aplikasi Rian Inovatif</span>
+				</div>
+				<p class="reveal-up text-[9px] tracking-[0.4em] text-white/20 uppercase mt-2">Rian Wibowo</p>
+			</div>
+		</section>
+
+		<!-- IDENTITY: CAREER PATH -->
+		<section class="py-10 md:py-16 px-6 md:px-[10vw] border-t border-white/5">
+			<div class="max-w-5xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-10">
+				<div class="md:col-span-3">
+					<span class="text-[8px] tracking-[0.4em] text-white/20 uppercase block">/ Identity</span>
+				</div>
+				<div class="md:col-span-9">
+					<h2 class="reveal-up text-xl md:text-3xl font-serif font-light leading-tight italic">
+						Membangun karier di bidang <span class="text-white font-normal">Web Dev, QA,</span> dan <span class="text-white font-normal">IT Support</span>. Pembelajar cepat yang siap beradaptasi dengan tantangan baru.
+					</h2>
+				</div>
+			</div>
+		</section>
+
+		<!-- TECHNICAL NAVIGATOR: DENSE GRID -->
+		<section class="py-12 md:py-20 px-6 md:px-[10vw] bg-white/[0.01]">
+			<div class="max-w-7xl mx-auto">
+				<span class="text-[8px] tracking-[0.4em] text-white/20 uppercase block mb-10">/ Technical Navigator</span>
+				<div class="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+					{technicalNavigator.map(nav => (
+						<div class="reveal-up">
+							<h4 class="text-[8px] tracking-[0.2em] uppercase text-amber-500/60 font-bold mb-4">{nav.group}</h4>
+							<ul class="flex flex-col gap-1">
+								{nav.items.map(item => (
+									<li class="text-sm md:text-lg font-serif italic text-white/40 hover:text-white transition-colors">{item}</li>
+								))}
+							</ul>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- EXPEDITION LOG: COMPACT -->
+		<section class="py-12 md:py-24 px-6 md:px-[10vw]">
+			<div class="max-w-5xl mx-auto">
+				<span class="text-[8px] tracking-[0.4em] text-white/20 uppercase block mb-10">/ Expedition Log</span>
+				<div class="flex flex-col gap-10 md:gap-16">
+					{expeditions.map(exp => (
+						<div class="reveal-up group border-l border-white/10 pl-6 md:pl-10 relative">
+							<div class="absolute w-1.5 h-1.5 bg-amber-500/40 rounded-full -left-[3.5px] top-1.5"></div>
+							<span class="text-[8px] font-mono text-white/20 uppercase block mb-1">{exp.period}</span>
+							<h3 class="text-xl md:text-3xl font-serif italic text-white leading-none">{exp.company}</h3>
+							<p class="text-[10px] text-amber-500/50 uppercase tracking-widest mt-2 mb-4 font-bold">{exp.role}</p>
+							<p class="text-xs md:text-sm text-white/30 leading-relaxed max-w-2xl">{exp.jobdesk}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- PROJECTS: DENSE -->
+		<section class="py-12 md:py-24 px-6 md:px-[5vw] border-t border-white/5">
+			<div class="max-w-7xl mx-auto">
+				<div class="flex justify-between items-end mb-10 reveal-up">
+					<h2 class="text-5xl md:text-8xl font-serif font-black tracking-tighter italic opacity-10 uppercase">Archive</h2>
+				</div>
+				<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+					{projects.map((p, i) => (
+						<div class="reveal-up group bg-[#0a0a0a] border border-white/5 p-6 md:p-10 rounded-2xl md:rounded-3xl hover:border-amber-500/20 transition-all duration-500 cursor-pointer pointer-events-auto">
+							<span class="text-[8px] font-mono text-white/10 block mb-4">0{i+1}</span>
+							<h3 class="text-xl md:text-2xl font-serif italic text-white group-hover:text-amber-500 transition-all">{p.title}</h3>
+							<p class="mt-2 text-[9px] tracking-widest text-white/30 uppercase leading-relaxed">{p.sub}</p>
+						</div>
+					))}
+				</div>
+			</div>
+		</section>
+
+		<!-- FOOTER: TIGHT -->
+		<footer class="py-16 px-6 md:px-[10vw] border-t border-white/5 bg-[#030303] text-center">
+			<div class="flex flex-col items-center gap-8">
+				<div class="flex flex-wrap justify-center gap-x-8 gap-y-4 text-[9px] tracking-[0.2em] uppercase text-white/30 font-bold">
+					<a href="mailto:rianwibowo2002@gmail.com" class="hover:text-white pointer-events-auto">Email</a>
+					<a href="https://www.instagram.com/rianwibw/" class="hover:text-white pointer-events-auto">Instagram</a>
+					<a href="https://github.com/ryanwibw" class="hover:text-white pointer-events-auto">GitHub</a>
+					<a href="https://wa.me/6289606508090" class="hover:text-white pointer-events-auto">WhatsApp</a>
+				</div>
+				<p class="text-[8px] tracking-[0.5em] uppercase text-white/10 font-light">
+					© 2026 MARI — Rian Wibowo
+				</p>
+			</div>
+		</footer>
+
+	</main>
+
+	<script>
+		import gsap from 'gsap';
+		import { ScrollTrigger } from 'gsap/ScrollTrigger';
+		import Lenis from 'lenis';
+
+		gsap.registerPlugin(ScrollTrigger);
+
+		const lenis = new Lenis({ duration: 1.2 });
+		function raf(time: number) { lenis.raf(time); requestAnimationFrame(raf); }
+		requestAnimationFrame(raf);
+
+		gsap.utils.toArray(".reveal-up").forEach((el: any) => {
+			gsap.from(el, {
+				opacity: 0,
+				y: 15,
+				duration: 0.6,
+				scrollTrigger: {
+					trigger: el,
+					start: "top 98%",
+					toggleActions: "play none none reverse"
+				}
+			});
+		});
+	</script>
+</Layout>
+
+<style>
+	:root { background-color: #050505; }
+	::-webkit-scrollbar { display: none; }
+	body { background: #050505; cursor: crosshair; }
+	* { -webkit-font-smoothing: antialiased; }
+	.font-serif { font-family: 'Playfair Display', serif; }
+</style>

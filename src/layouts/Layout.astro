@@ -1,0 +1,101 @@
+---
+import "../styles/global.css";
+---
+
+<!doctype html>
+<html lang="en" class="selection:bg-white/20">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.ico" />
+		<link rel="icon" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>MARI - Modern Aplikasi Rian Inovatif</title>
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-[#050505] text-white antialiased overflow-x-hidden">
+		<!-- CINEMATIC GRAIN OVERLAY -->
+		<div class="fixed inset-0 pointer-events-none z-[9999] opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]"></div>
+		
+		<!-- CUSTOM CURSOR (Optional placeholder for GSAP) -->
+		<div id="cursor" class="fixed w-4 h-4 bg-white rounded-full pointer-events-none z-[10000] mix-blend-difference opacity-0 transition-opacity duration-300"></div>
+
+		<slot />
+
+		<script>
+			import Lenis from 'lenis';
+			import gsap from 'gsap';
+			import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+			// Smooth Scroll Setup
+			const lenis = new Lenis({
+				duration: 1.2,
+				easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+				smoothWheel: true,
+			});
+
+			function raf(time: number) {
+				lenis.raf(time);
+				requestAnimationFrame(raf);
+			}
+
+			requestAnimationFrame(raf);
+
+			// Custom Cursor GSAP
+			const cursor = document.getElementById('cursor');
+			if (cursor) {
+				window.addEventListener('mousemove', (e) => {
+					gsap.to(cursor, {
+						x: e.clientX,
+						y: e.clientY,
+						duration: 0.5,
+						ease: "power2.out",
+						opacity: 1
+					});
+				});
+			}
+		</script>
+	</body>
+</html>
+
+<style is:global>
+	:root {
+		--font-sans: 'Inter', sans-serif;
+		--font-serif: 'Playfair Display', serif;
+	}
+	
+	html.lenis {
+		height: auto;
+	}
+
+	.lenis.lenis-smooth {
+		scroll-behavior: auto !important;
+	}
+
+	.lenis.lenis-smooth [data-lenis-prevent] {
+		overscroll-behavior: contain;
+	}
+
+	.lenis.lenis-stopped {
+		overflow: hidden;
+	}
+
+	.lenis.lenis-scrolling iframe {
+		pointer-events: none;
+	}
+
+	body {
+		font-family: var(--font-sans);
+	}
+
+	h1, h2, h3, .font-serif {
+		font-family: var(--font-serif);
+	}
+
+	/* Utility classes for GSAP */
+	.reveal-text {
+		clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+	}
+</style>
